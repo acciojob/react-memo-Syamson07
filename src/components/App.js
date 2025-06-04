@@ -7,25 +7,20 @@ const App = () => {
   const [counter, setCounter] = useState(0);
   const [customTask, setCustomTask] = useState("");
 
-  // Add a new todo with the label "New todo"
   const addNewTodo = () => {
     setTodos((prevTodos) => [...prevTodos, "New todo"]);
   };
 
-  // Increment counter
   const incrementCounter = () => {
     setCounter((c) => c + 1);
   };
 
-  // Validate using useMemo inside UseMemo component
-  // Here, validate length > 5 for customTask before adding
   const canAddCustomTask = customTask.length > 5;
 
-  // Add custom task if valid
   const submitCustomTask = () => {
     if (canAddCustomTask) {
       setTodos((prevTodos) => [...prevTodos, customTask]);
-      setCustomTask(""); // Clear input after adding
+      setCustomTask("");
     } else {
       alert("Task must be more than 5 characters.");
     }
@@ -37,7 +32,7 @@ const App = () => {
 
       <div>
         <h2>Todos</h2>
-        <button onClick={addNewTodo}>Add Todo</button>
+        <button onClick={addNewTodo}>Add todo</button>
         <ul>
           {todos.map((todo, idx) => (
             <TodoItem key={idx} todo={todo} />
@@ -46,16 +41,16 @@ const App = () => {
       </div>
 
       <div>
-        <h2>Custom Task Input</h2>
+        <h2>Skills</h2>
         <input
           type="text"
           value={customTask}
           onChange={(e) => setCustomTask(e.target.value)}
-          placeholder="Enter custom task"
+          placeholder="Enter skill"
         />
         <UseMemo task={customTask} />
         <button onClick={submitCustomTask} disabled={!canAddCustomTask}>
-          Submit
+          Add Skill
         </button>
       </div>
 
