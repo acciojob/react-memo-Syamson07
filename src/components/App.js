@@ -32,7 +32,7 @@ const App = () => {
 
       <div>
         <h2>Todos</h2>
-        <button onClick={addNewTodo}>Add todo</button>
+        <button onClick={addNewTodo}>Add Todo</button>
         <ul>
           {todos.map((todo, idx) => (
             <TodoItem key={idx} todo={todo} />
