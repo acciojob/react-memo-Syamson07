@@ -1,16 +1,18 @@
 import React, { useMemo } from "react";
 
 const UseMemo = ({ task }) => {
-  // useMemo to compute validity of the task input (length > 5)
   const isValid = useMemo(() => {
-    console.log("Validating task input...");
+    console.log("Validating task length...");
     return task.length > 5;
   }, [task]);
 
   return (
-    <div>
-      <p>Task length: {task.length}</p>
-      <p>{isValid ? "Task is valid 👍" : "Task must be more than 5 characters."}</p>
+    <div style={{ marginTop: 10 }}>
+      {task.length > 0 && (
+        <span style={{ color: isValid ? "green" : "red" }}>
+          {isValid ? "Valid task ✅" : "Too short ❌"}
+        </span>
+      )}
     </div>
   );
 };
